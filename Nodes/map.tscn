@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://rb8tkdosr34n"]
+
+[ext_resource type="Script" uid="uid://bkbprkkxp3nd4" path="res://Nodes/map.gd" id="1_04a3l"]
+[ext_resource type="PackedScene" uid="uid://qvnpoeahj1kn" path="res://Nodes/player.tscn" id="2_87ea5"]
+
+[sub_resource type="TileSet" id="TileSet_whqwa"]
+
+[node name="Map" type="Node2D" unique_id=351992275 node_paths=PackedStringArray("player")]
+script = ExtResource("1_04a3l")
+player = NodePath("Player")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2137947566]
+tile_set = SubResource("TileSet_whqwa")
+
+[node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]
