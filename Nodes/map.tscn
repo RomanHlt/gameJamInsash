@@ -1,74 +1,15 @@
-[gd_scene format=4 uid="uid://rb8tkdosr34n"]
+[gd_scene format=3 uid="uid://rb8tkdosr34n"]
 
 [ext_resource type="Script" uid="uid://bkbprkkxp3nd4" path="res://Nodes/map.gd" id="1_04a3l"]
 [ext_resource type="PackedScene" uid="uid://qvnpoeahj1kn" path="res://Nodes/player.tscn" id="2_87ea5"]
-[ext_resource type="Texture2D" uid="uid://b8mux0pkvkhw1" path="res://TexturePack/DungeonAssets/dungeonSpritePack_Divided/walls1.png" id="2_w0csw"]
-[ext_resource type="Texture2D" uid="uid://bsrqosgp7yuec" path="res://TexturePack/DungeonAssets/dungeonSpritePack_Divided/walls2.png" id="3_u6qu4"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rb5ux"]
-texture = ExtResource("2_w0csw")
-0:0/0 = 0
-4:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cc1n3"]
-texture = ExtResource("3_u6qu4")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_whqwa"]
-sources/0 = SubResource("TileSetAtlasSource_rb5ux")
-sources/1 = SubResource("TileSetAtlasSource_cc1n3")
 
-[node name="Map" type="Node2D" unique_id=351992275 node_paths=PackedStringArray("player", "tile_map_layer")]
+[node name="Map" type="Node2D" unique_id=351992275 node_paths=PackedStringArray("player")]
 script = ExtResource("1_04a3l")
 player = NodePath("Player")
-tile_map_layer = NodePath("View")
 
-[node name="View" type="TileMapLayer" parent="." unique_id=2137947566]
-texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAJAAAAAAAAAAEAAAAKAAAAAAAAAAEAAAALAAAAAAAAAAEAAAAMAAAAAAAAAAEAAAANAAAAAAAAAAEAAAAOAAAAAAAAAAEAAAAPAAAAAAAAAAEAAAAQAAAAAAAAAAEAAAARAAAAAAAAAAEAAAASAAAAAAAAAAEAAAATAAAAAAAAAAEAAAA=")
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2137947566]
 tile_set = SubResource("TileSet_whqwa")
 
 [node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]

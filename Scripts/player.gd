@@ -1,9 +1,9 @@
 extends Node2D
 class_name Player
 
-@export var posX:int = 0;
-@export var posY:int = 0;
-@export var viewFront:bool = true; 
+var posX:int = 0;
+var posY:int = 0;
+var viewFrot:bool = true; 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
