@@ -10,11 +10,10 @@ func _ready() -> void:
 	var map = get_parent().get_parent()
 	var carte = map.plan
 
-	for y in carte.size():
-		for x in carte[y].size():
-			var cell = Vector2i(x,y)
-			if carte[x][y] == 0:
-				set_cell(cell, 0, Tile_Wall)
+	for ligne in range (len(carte)):
+		for colonne in range (len(carte[ligne])):
+			var cell = Vector2i(colonne,ligne)
+			if carte[ligne][colonne] == 0:
+				set_cell(cell, 2, Tile_Wall)
 			else:
-				set_cell(cell, 0, Tile_Floor)
-	print("ça marche?")
+				set_cell(cell, 2, Tile_Floor)	
