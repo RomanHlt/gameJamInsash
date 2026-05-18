@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bkbprkkxp3nd4" path="res://Nodes/map.gd" id="1_04a3l"]
 [ext_resource type="PackedScene" uid="uid://qvnpoeahj1kn" path="res://Nodes/player.tscn" id="2_87ea5"]
+[ext_resource type="Script" uid="uid://dttj2mme7lrd7" path="res://Nodes/minimap.gd" id="3_mb55k"]
 
 [sub_resource type="TileSet" id="TileSet_whqwa"]
 
@@ -13,3 +14,8 @@ player = NodePath("Player")
 tile_set = SubResource("TileSet_whqwa")
 
 [node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819207978]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer" unique_id=1705811350]
+script = ExtResource("3_mb55k")
