@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b5qntyrdvvdu5"]
+
+[ext_resource type="Script" uid="uid://dqk0m8hiklksu" path="res://Scripts/generateur.gd" id="1_yikj8"]
+
+[node name="Generateur" type="Control" unique_id=2051463712]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yikj8")
