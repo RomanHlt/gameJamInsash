@@ -31,4 +31,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("afficher"):
+		print(get_view());
+	if Input.is_action_just_pressed("rotate"):
+		player.viewFront = !player.viewFront;
+
+
+func get_view()->Array:
+	if player.viewFront:
+		return plan[player.posX];
+	else:
+		var x =[];
+		for i in range(len(plan)):
+			x.append(plan[i][player.posY]);
+		return x;

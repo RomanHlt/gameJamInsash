@@ -4,3 +4,5 @@
 
 [node name="Player" type="Node2D" unique_id=1444893851]
 script = ExtResource("1_aoxlc")
+posX = 9
+posY = 8
