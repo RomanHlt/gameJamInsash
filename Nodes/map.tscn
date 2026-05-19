@@ -244,13 +244,17 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAE
 tile_set = SubResource("TileSet_whqwa")
 
 [node name="View_back" type="TileMapLayer" parent="." unique_id=1350996797]
-modulate = Color(1, 1, 1, 0.39215687)
+modulate = Color(1, 1, 1, 0.22352941)
 tile_map_data = PackedByteArray("AAALAAAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_bchwl")
 
 [node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]
+visible = false
+posX = 1
+posY = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819207978]
+visible = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer" unique_id=1705811350]
 tile_set = SubResource("TileSet_u6qu4")
