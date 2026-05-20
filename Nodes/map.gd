@@ -1,11 +1,10 @@
 extends Node2D
 
+@export var generateur : Control
+@export var n : int = 10
+
 var seed :int =0;
-var plan = [
-	[0,1,1],
-	[1,1,0],
-	[1,0,0]
-	]
+var plan = []
 
 @export var player:Player;
 @export var front: TileMapLayer
@@ -26,7 +25,12 @@ func _process(delta: float) -> void:
 		player.view = (player.view + 1) % 4
 		if player.view < 0: player.view += 4;
 		print("view", player.view);
-		print(get_view())
+		get_view()
+
+func generate():
+	plan = generateur.generate_labyrinth(n, n)
+	for ligne in plan:
+		print(ligne)
 
 func get_view()->Array[Array]:
 	var front : Array[int] = []
@@ -36,16 +40,24 @@ func get_view()->Array[Array]:
 		for i in plan[player.posY]:
 			front.append(i)
 		# Ligne derrière (Back)
-		for i in plan[player.posY-1]:
-			back.append(i)
+		if player.posY == 0:
+			for i in plan[player.posY]: 
+				back.append(0)
+		else:
+			for i in plan[player.posY-1]:
+				back.append(i)
 
 	if player.view == 1:
 		# Ligne du joueur (Front)
 		for ligne in plan:
 			front.append(ligne[player.posX])
 		# Ligne derrière (Back)
-		for ligne in plan:
-			back.append(ligne[player.posX-1])
+		if player.posX == 0:
+			for ligne in plan:
+				back.append(0)
+		else:
+			for ligne in plan:
+				back.append(ligne[player.posX-1])
 		# inverse
 		for i in range(len(front)/2):
 			var temp = front[-1-i]
@@ -61,8 +73,12 @@ func get_view()->Array[Array]:
 		for i in plan[player.posY]:
 			front.append(i)
 		# Ligne derrière (Back)
-		for i in plan[player.posY+1]:
-			back.append(i)
+		if player.posY == len(plan) - 1:
+			for i in plan[player.posY]:
+				back.append(0)
+		else:
+			for i in plan[player.posY+1]:
+				back.append(i)
 		# inverse
 		for i in range(len(front)/2):
 			var temp = front[-1-i]
@@ -78,6 +94,10 @@ func get_view()->Array[Array]:
 		for ligne in plan:
 			front.append(ligne[player.posX])
 		# Ligne derrière (Back)
-		for ligne in plan:
-			back.append(ligne[player.posX+1])
+		if player.posX == len(plan[player.posX]):
+			for ligne in plan:
+				back.append(0)
+		else:
+			for ligne in plan:
+				back.append(ligne[player.posX+1])
 	return [front, back]

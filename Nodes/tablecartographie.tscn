@@ -1,19 +1,49 @@
 [gd_scene format=3 uid="uid://2xsy723m5x07"]
 
 [ext_resource type="Script" uid="uid://cvwhreroycu2b" path="res://Scripts/tablecartographie.gd" id="1_4tqhh"]
+[ext_resource type="Texture2D" uid="uid://dju2tmld8kqiw" path="res://TexturePack/DungeonAssets/table consultation map1.png" id="2_wicy6"]
+[ext_resource type="Texture2D" uid="uid://bmkclo5tiu7ys" path="res://TexturePack/DungeonAssets/table consultation map2.png" id="3_1rpyo"]
+[ext_resource type="Texture2D" uid="uid://dhu2xarw7v4jp" path="res://TexturePack/DungeonAssets/table consultation map3.png" id="4_kbgo4"]
+[ext_resource type="Texture2D" uid="uid://b2xlyabgaltjq" path="res://TexturePack/DungeonAssets/table consultation map4.png" id="5_5lyui"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uyaq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wicy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1rpyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kbgo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5lyui")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86v4e"]
-size = Vector2(95, 52)
+size = Vector2(42.73826, 17.23077)
 
 [node name="Tablecartographie" type="Node2D" unique_id=2107118829]
+texture_filter = 1
 script = ExtResource("1_4tqhh")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1178957269]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=397751130]
+position = Vector2(131, 101.147644)
+scale = Vector2(17.375, 13.643456)
+sprite_frames = SubResource("SpriteFrames_uyaq3")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=617496543]
+[node name="Area2D" type="Area2D" parent="." unique_id=617496543]
+position = Vector2(66.5, 50.5)
+scale = Vector2(9.3125, 7.3125)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=679784689]
-position = Vector2(37.5, 16)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=679784689]
+position = Vector2(8, 13.470091)
 shape = SubResource("RectangleShape2D_86v4e")
 
 [node name="Interact" type="Label" parent="." unique_id=573765327]
@@ -28,5 +58,5 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Vous avez déjà utilisé cette table de cartographie, sa magie est épuisée."
 
-[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

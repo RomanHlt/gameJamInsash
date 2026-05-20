@@ -1,13 +1,12 @@
 extends TileMapLayer
 
-#@export var map:Node2D;
+@export var map: Node2D;
 
 const Tile_Wall = Vector2i(0,0)
 const Tile_Floor = Vector2i(1,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var map = get_parent().get_parent()
 	var carte = map.plan
 
 	for ligne in range (len(carte)):
