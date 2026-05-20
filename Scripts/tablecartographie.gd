@@ -25,6 +25,9 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 			$Interact.hide()
 			canInteract = false
 
+func _ready() -> void:
+	$Sprite2D.play("default")
+
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("interact") and canInteract:
 		canvas.show()

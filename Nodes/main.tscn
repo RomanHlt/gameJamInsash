@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bmf5iu8lqev6i"]
+
+[ext_resource type="PackedScene" uid="uid://xuf03ghsxfy3" path="res://Nodes/accueil.tscn" id="1_83sl0"]
+[ext_resource type="Script" uid="uid://6jltgvj8ndrc" path="res://Scripts/main.gd" id="1_uxqe4"]
+[ext_resource type="PackedScene" uid="uid://b5qntyrdvvdu5" path="res://Nodes/generateur.tscn" id="2_cfxlj"]
+[ext_resource type="PackedScene" uid="uid://rb8tkdosr34n" path="res://Nodes/map.tscn" id="2_h2ymo"]
+
+[node name="Main" type="Control" unique_id=1371591673]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uxqe4")
+
+[node name="Accueil" parent="." unique_id=1223826562 instance=ExtResource("1_83sl0")]
+visible = false
+layout_mode = 1
+
+[node name="Generateur" parent="." unique_id=2051463712 instance=ExtResource("2_cfxlj")]
+visible = false
+layout_mode = 0
+
+[node name="Map" parent="." unique_id=351992275 node_paths=PackedStringArray("generateur") instance=ExtResource("2_h2ymo")]
+visible = false
+generateur = NodePath("../Generateur")
