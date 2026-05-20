@@ -19,7 +19,7 @@ func credits():
 	$Accueil.show()
 
 func moins():
-	if taille > 3:
+	if taille > 4:
 		taille -= 1
 		$Map.n = taille
 		$Accueil.nombre.text = str(taille)
