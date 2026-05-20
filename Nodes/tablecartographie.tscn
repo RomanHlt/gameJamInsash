@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://2xsy723m5x07"]
+
+[ext_resource type="Script" uid="uid://cvwhreroycu2b" path="res://Scripts/tablecartographie.gd" id="1_4tqhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86v4e"]
+size = Vector2(232, 103)
+
+[node name="Tablecartographie" type="Node2D" unique_id=1131224963]
+script = ExtResource("1_4tqhh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=171806301]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1255172874]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1561316453]
+position = Vector2(106, 41.5)
+shape = SubResource("RectangleShape2D_86v4e")
+
+[node name="Press SPACE" type="Label" parent="." unique_id=281021701]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SPACE pour utiliser"
+
+[node name="STOP" type="Label" parent="." unique_id=340366796]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Vous avez déjà utilisé cette table, sa magie est épuisée."
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
