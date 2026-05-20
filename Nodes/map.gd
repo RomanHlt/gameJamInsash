@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var generateur : Control
-@export var n : int = 10
+@export var n : int = 5
 
 var seed :int =0;
 var plan = []
@@ -29,8 +29,22 @@ func _process(delta: float) -> void:
 
 func generate():
 	plan = generateur.generate_labyrinth(n, n)
+	var valide = false
+	var x = 0
+	var y = 0
+	while not valide:
+		# Pas de spawn de table de carto sur les bords (2 de marge)
+		x = randi_range(2, len(plan[0]) - 3)
+		y = randi_range(2, len(plan) - 3)
+		if plan[x][y] == 1:
+			valide = true
+	$Tablecartographie.posX = x
+	$Tablecartographie.posY = y
+	
 	for ligne in plan:
 		print(ligne)
+	print($Tablecartographie.posX,$Tablecartographie.posY)
+	print(plan[$Tablecartographie.posX][$Tablecartographie.posY])
 
 func get_view()->Array[Array]:
 	var front : Array[int] = []

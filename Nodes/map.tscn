@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dttj2mme7lrd7" path="res://Nodes/minimap.gd" id="3_mb55k"]
 [ext_resource type="Texture2D" uid="uid://bsrqosgp7yuec" path="res://TexturePack/DungeonAssets/dungeonSpritePack_Divided/walls2.png" id="3_u6qu4"]
 [ext_resource type="Texture2D" uid="uid://1k5dfik28vey" path="res://TexturePack/DungeonAssets/dungeonSpritePack.png" id="3_w0csw"]
+[ext_resource type="PackedScene" uid="uid://2xsy723m5x07" path="res://Nodes/tablecartographie.tscn" id="5_cc1n3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rb5ux"]
 texture = ExtResource("2_w0csw")
@@ -252,6 +253,10 @@ tile_set = SubResource("TileSet_bchwl")
 visible = false
 posX = 1
 posY = 1
+
+[node name="Tablecartographie" parent="." unique_id=2107118829 node_paths=PackedStringArray("canvas") instance=ExtResource("5_cc1n3")]
+visible = false
+canvas = NodePath("../CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819207978]
 visible = false
