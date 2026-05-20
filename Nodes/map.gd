@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 		player.view = (player.view + 1) % 4
 		if player.view < 0: player.view += 4;
 		print("view", player.view);
-		print(get_view())
+		get_view()
 
 func get_view()->Array[Array]:
 	var front : Array[int] = []

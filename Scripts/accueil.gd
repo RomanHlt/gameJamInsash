@@ -1,10 +1,10 @@
 extends Control
 
 func _on_play_pressed() -> void:
-	Main.play()
+	get_parent().play()
 
 func _on_settings_pressed() -> void:
-	Main.settings()
+	get_parent().settings()
 
 func _on_credits_pressed() -> void:
-	Main.credits()
+	get_parent().credits()
