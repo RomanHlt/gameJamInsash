@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bkbprkkxp3nd4" path="res://Nodes/map.gd" id="1_04a3l"]
 [ext_resource type="PackedScene" uid="uid://qvnpoeahj1kn" path="res://Nodes/player.tscn" id="2_87ea5"]
-[ext_resource type="Script" uid="uid://dttj2mme7lrd7" path="res://Nodes/minimap.gd" id="3_mb55k"]
-[ext_resource type="Texture2D" uid="uid://1k5dfik28vey" path="res://TexturePack/DungeonAssets/dungeonSpritePack.png" id="3_w0csw"]
 [ext_resource type="Texture2D" uid="uid://b8mux0pkvkhw1" path="res://TexturePack/DungeonAssets/dungeonSpritePack_Divided/walls1.png" id="2_w0csw"]
 [ext_resource type="Texture2D" uid="uid://bsrqosgp7yuec" path="res://TexturePack/DungeonAssets/dungeonSpritePack_Divided/walls2.png" id="3_u6qu4"]
+[ext_resource type="Texture2D" uid="uid://1k5dfik28vey" path="res://TexturePack/DungeonAssets/dungeonSpritePack.png" id="3_w0csw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rb5ux"]
 texture = ExtResource("2_w0csw")
@@ -176,22 +175,45 @@ texture = ExtResource("3_w0csw")
 [sub_resource type="TileSet" id="TileSet_u6qu4"]
 sources/2 = SubResource("TileSetAtlasSource_u6qu4")
 
+[sub_resource type="GDScript" id="GDScript_u6qu4"]
+script/source = "extends TileMapLayer
+
+#@export var map:Node2D;
+
+const Tile_Wall = Vector2i(0,0)
+const Tile_Floor = Vector2i(1,0)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	var map = get_parent().get_parent()
+	var carte = map.plan
+
+	for ligne in range (len(carte)):
+		for colonne in range (len(carte[ligne])):
+			var cell = Vector2i(colonne,ligne)
+			if carte[ligne][colonne] == 0:
+				set_cell(cell, 2, Tile_Wall)
+			else:
+				set_cell(cell, 2, Tile_Floor)	
+"
+
 [node name="Map" type="Node2D" unique_id=351992275 node_paths=PackedStringArray("player", "tile_map_layer")]
 script = ExtResource("1_04a3l")
 player = NodePath("Player")
 tile_map_layer = NodePath("View")
 
 [node name="View" type="TileMapLayer" parent="." unique_id=2137947566]
+visible = false
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAJAAAAAAAAAAEAAAAKAAAAAAAAAAEAAAALAAAAAAAAAAEAAAAMAAAAAAAAAAEAAAANAAAAAAAAAAEAAAAOAAAAAAAAAAEAAAAPAAAAAAAAAAEAAAAQAAAAAAAAAAEAAAARAAAAAAAAAAEAAAASAAAAAAAAAAEAAAATAAAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_whqwa")
 
 [node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]
+visible = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819207978]
+[node name="Minimap" type="CanvasLayer" parent="." unique_id=1819207978]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer" unique_id=1705811350]
+[node name="GenerationMiniMap" type="TileMapLayer" parent="Minimap" unique_id=1705811350]
+position = Vector2(406, 182)
 tile_set = SubResource("TileSet_u6qu4")
-script = ExtResource("3_mb55k")
-
-[node name="Node2D" type="Node2D" parent="CanvasLayer" unique_id=909726054]
+script = SubResource("GDScript_u6qu4")
