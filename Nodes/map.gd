@@ -26,77 +26,58 @@ func _process(delta: float) -> void:
 		player.view = (player.view + 1) % 4
 		if player.view < 0: player.view += 4;
 		print("view", player.view);
-		get_view();
+		print(get_view())
 
-func get_view()->void:
+func get_view()->Array[Array]:
+	var front : Array[int] = []
+	var back : Array[int] = []
 	if player.view == 0:
-		var x:int = 0 # Décalage en x au niveau de l'affichage
 		# Ligne du joueur (Front)
 		for i in plan[player.posY]:
-			if i == 0: # Vide
-				front.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif i == 1: # Mur
-				front.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x+=1;
-		x = 0
+			front.append(i)
 		# Ligne derrière (Back)
 		for i in plan[player.posY-1]:
-			if i == 0: # Vide
-				back.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif i == 1: # Mur
-				back.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x+=1;
+			back.append(i)
 
 	if player.view == 1:
-		var x:int = len(plan) - 1 # Décalage en x au niveau de l'affichage (Commence à la fin et va vers le debut pour la vue de derrière le laby)
 		# Ligne du joueur (Front)
 		for ligne in plan:
-			if ligne[player.posX] == 0: # Vide
-				front.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif ligne[player.posX] == 1: # Mur
-				front.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x-=1;
-		x = len(plan) - 1
+			front.append(ligne[player.posX])
 		# Ligne derrière (Back)
 		for ligne in plan:
-			if ligne[player.posX+1] == 0: # Vide
-				back.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif ligne[player.posX-1] == 1: # Mur
-				back.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x-=1;
+			back.append(ligne[player.posX-1])
+		# inverse
+		for i in range(len(front)/2):
+			var temp = front[-1-i]
+			front[-1-i] = front[i]
+			front[i] = temp
+		for i in range(len(back)/2):
+			var temp = back[-1-i]
+			back[-1-i] = back[i]
+			back[i] = temp
 	
 	if player.view == 2:
-		var x:int = len(plan[player.posY]) - 1 # Décalage en x au niveau de l'affichage (Commence à la fin et va vers le debut pour la vue de derrière le laby)
 		# Ligne du joueur (Front)
 		for i in plan[player.posY]:
-			if i == 0: # Vide
-				front.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif i == 1: # Mur
-				front.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x-=1;
-		x = len(plan[player.posY+1])
+			front.append(i)
 		# Ligne derrière (Back)
 		for i in plan[player.posY+1]:
-			if i == 0: # Vide
-				back.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif i == 1: # Mur
-				back.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x-=1;
-	
+			back.append(i)
+		# inverse
+		for i in range(len(front)/2):
+			var temp = front[-1-i]
+			front[-1-i] = front[i]
+			front[i] = temp
+		for i in range(len(back)/2):
+			var temp = back[-1-i]
+			back[-1-i] = back[i]
+			back[i] = temp
+			
 	if player.view == 3:
-		var x:int = 0 # Décalage en x au niveau de l'affichage
 		# Ligne du joueur (Front)
 		for ligne in plan:
-			if ligne[player.posX] == 0: # Vide
-				front.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif ligne[player.posX] == 1: # Mur
-				front.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x+=1;
-		x = 0
+			front.append(ligne[player.posX])
 		# Ligne derrière (Back)
 		for ligne in plan:
-			if ligne[player.posX+1] == 0: # Vide
-				back.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif ligne[player.posX+1] == 1: # Mur
-				back.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x+=1;
+			back.append(ligne[player.posX+1])
+	return [front, back]
