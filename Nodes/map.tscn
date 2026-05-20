@@ -203,15 +203,14 @@ player = NodePath("Player")
 tile_map_layer = NodePath("View")
 
 [node name="View" type="TileMapLayer" parent="." unique_id=2137947566]
-visible = false
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAJAAAAAAAAAAEAAAAKAAAAAAAAAAEAAAALAAAAAAAAAAEAAAAMAAAAAAAAAAEAAAANAAAAAAAAAAEAAAAOAAAAAAAAAAEAAAAPAAAAAAAAAAEAAAAQAAAAAAAAAAEAAAARAAAAAAAAAAEAAAASAAAAAAAAAAEAAAATAAAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_whqwa")
 
 [node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]
-visible = false
 
 [node name="Minimap" type="CanvasLayer" parent="." unique_id=1819207978]
+visible = false
 
 [node name="GenerationMiniMap" type="TileMapLayer" parent="Minimap" unique_id=1705811350]
 position = Vector2(406, 182)
