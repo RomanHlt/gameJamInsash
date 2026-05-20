@@ -15,7 +15,7 @@ func generate_labyrinth(width: int, height: int) -> Array:
 	for y in range(grid_height):
 		grid.append([])
 		for x in range(grid_width):
-			grid[y].append(1)
+			grid[y].append(0)
 
 	var visited = []
 
@@ -38,7 +38,7 @@ func dfs(cx: int, cy: int, width: int, height: int, visited: Array, grid: Array)
 	var gy = cy * 2 + 1
 
 	# Ouvre la cellule
-	grid[gy][gx] = 0
+	grid[gy][gx] = 1
 
 	var directions = [
 		Vector2i(1, 0),
@@ -64,6 +64,6 @@ func dfs(cx: int, cy: int, width: int, height: int, visited: Array, grid: Array)
 				var wall_x = (gx + ngx) / 2
 				var wall_y = (gy + ngy) / 2
 
-				grid[wall_y][wall_x] = 0
+				grid[wall_y][wall_x] = 1
 
 				dfs(nx, ny, width, height, visited, grid)

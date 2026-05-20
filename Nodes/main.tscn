@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://6jltgvj8ndrc" path="res://Scripts/main.gd" id="1_uxqe4"]
 [ext_resource type="PackedScene" uid="uid://b5qntyrdvvdu5" path="res://Nodes/generateur.tscn" id="2_cfxlj"]
 [ext_resource type="PackedScene" uid="uid://rb8tkdosr34n" path="res://Nodes/map.tscn" id="2_h2ymo"]
+[ext_resource type="PackedScene" uid="uid://b0yiqy3nag3bs" path="res://Nodes/credits.tscn" id="3_r680b"]
 
 [node name="Main" type="Control" unique_id=1371591673]
 process_mode = 3
@@ -19,10 +20,14 @@ script = ExtResource("1_uxqe4")
 visible = false
 layout_mode = 1
 
-[node name="Generateur" parent="." unique_id=2051463712 instance=ExtResource("2_cfxlj")]
+[node name="Credits" parent="." unique_id=506157109 instance=ExtResource("3_r680b")]
 visible = false
-layout_mode = 0
+layout_mode = 1
 
 [node name="Map" parent="." unique_id=351992275 node_paths=PackedStringArray("generateur") instance=ExtResource("2_h2ymo")]
 visible = false
 generateur = NodePath("../Generateur")
+
+[node name="Generateur" parent="." unique_id=2051463712 instance=ExtResource("2_cfxlj")]
+visible = false
+layout_mode = 0
