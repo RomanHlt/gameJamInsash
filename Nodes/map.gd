@@ -2,29 +2,14 @@ extends Node2D
 
 var seed :int =0;
 var plan = [
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,1,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0],
-	[0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0],
-	[0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,1,1,0,0,0],
-	[0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0],
-	[0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,0,0,0],
-	[0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0],
-	[0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0],
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+	[0,1,1],
+	[1,1,0],
+	[1,0,0]
+	]
 
 @export var player:Player;
-@export var tile_map_layer: TileMapLayer
+@export var front: TileMapLayer
+@export var back: TileMapLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,31 +17,67 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("afficher"):
-		print(get_view());
-	if Input.is_action_just_pressed("rotate"):
-		player.viewFront = !player.viewFront;
-		print(get_view());
+	if Input.is_action_just_pressed("rotate_left"):
+		player.view = (player.view - 1) % 4
+		if player.view < 0: player.view += 4;
+		print("view", player.view);
+		get_view();
+	if Input.is_action_just_pressed("rotate_right"):
+		player.view = (player.view + 1) % 4
+		if player.view < 0: player.view += 4;
+		print("view", player.view);
+		print(get_view())
 
-func get_view()->Array:
-	if player.viewFront:
-		var x:int=0
+func get_view()->Array[Array]:
+	var front : Array[int] = []
+	var back : Array[int] = []
+	if player.view == 0:
+		# Ligne du joueur (Front)
 		for i in plan[player.posY]:
-			print(player.viewFront,x);
-			if i == 0:
-				tile_map_layer.set_cell(Vector2i(x,0), 1, Vector2i(1,1), 0);
-			elif i==1:
-				tile_map_layer.set_cell(Vector2i(x,0), 1, Vector2i(10,1), 0);
-			x+=1;
+			front.append(i)
+		# Ligne derrière (Back)
+		for i in plan[player.posY-1]:
+			back.append(i)
 
-		return plan[player.posY];
-	else:
-		var a =[];
-		for i in range(len(plan)):
-			print(player.viewFront,i);
-			if plan[i][player.posX] == 0:
-				tile_map_layer.set_cell(Vector2i(i,0), 1, Vector2i(1,1), 0);
-			elif plan[i][player.posX] == 1:
-				tile_map_layer.set_cell(Vector2i(i,0), 1, Vector2i(10,1), 0);
-			a.append(plan[i][player.posX]);
-		return a;
+	if player.view == 1:
+		# Ligne du joueur (Front)
+		for ligne in plan:
+			front.append(ligne[player.posX])
+		# Ligne derrière (Back)
+		for ligne in plan:
+			back.append(ligne[player.posX-1])
+		# inverse
+		for i in range(len(front)/2):
+			var temp = front[-1-i]
+			front[-1-i] = front[i]
+			front[i] = temp
+		for i in range(len(back)/2):
+			var temp = back[-1-i]
+			back[-1-i] = back[i]
+			back[i] = temp
+	
+	if player.view == 2:
+		# Ligne du joueur (Front)
+		for i in plan[player.posY]:
+			front.append(i)
+		# Ligne derrière (Back)
+		for i in plan[player.posY+1]:
+			back.append(i)
+		# inverse
+		for i in range(len(front)/2):
+			var temp = front[-1-i]
+			front[-1-i] = front[i]
+			front[i] = temp
+		for i in range(len(back)/2):
+			var temp = back[-1-i]
+			back[-1-i] = back[i]
+			back[i] = temp
+			
+	if player.view == 3:
+		# Ligne du joueur (Front)
+		for ligne in plan:
+			front.append(ligne[player.posX])
+		# Ligne derrière (Back)
+		for ligne in plan:
+			back.append(ligne[player.posX+1])
+	return [front, back]
