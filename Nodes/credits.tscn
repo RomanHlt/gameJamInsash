@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://b0yiqy3nag3bs"]
 
+[ext_resource type="LabelSettings" uid="uid://2hknt0r0wsdj" path="res://TexturePack/new_label_settings.tres" id="1_24efm"]
 [ext_resource type="Texture2D" uid="uid://1k5dfik28vey" path="res://TexturePack/DungeonAssets/dungeonSpritePack.png" id="1_wsrse"]
 [ext_resource type="Texture2D" uid="uid://b8mux0pkvkhw1" path="res://TexturePack/DungeonAssets/dungeonSpritePack_Divided/walls1.png" id="2_24efm"]
 
@@ -86,6 +87,7 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="." unique_id=1209628633]
 top_level = true
 layout_mode = 0
+offset_top = 45.0
 offset_right = 765.0
 offset_bottom = 437.0
 text = "TEAM ORGA :
@@ -93,6 +95,7 @@ text = "TEAM ORGA :
 Roman
 Yael
 Enzo"
+label_settings = ExtResource("1_24efm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
