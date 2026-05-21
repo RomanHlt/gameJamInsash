@@ -11,6 +11,8 @@ func play():
 	$Map.show()
 	$Map.commandes.show()
 	$Accueil.hide()
+	$Timer.show()
+	$Timer/TIME.start()
 
 func credits():
 	$Credits.show()
@@ -35,6 +37,8 @@ func win():
 	$Map.hide()
 	$Map.commandes.hide()
 	$Victoire.show()
+	$Timer/TIME.stop()
 	await get_tree().create_timer(5).timeout
+	$Timer/TIME.hide()
 	$Victoire.hide()
 	$Accueil.show()

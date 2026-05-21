@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b5qntyrdvvdu5" path="res://Nodes/generateur.tscn" id="2_cfxlj"]
 [ext_resource type="PackedScene" uid="uid://rb8tkdosr34n" path="res://Nodes/map.tscn" id="2_h2ymo"]
 [ext_resource type="PackedScene" uid="uid://b0yiqy3nag3bs" path="res://Nodes/credits.tscn" id="3_r680b"]
+[ext_resource type="Script" uid="uid://c7k5u14wg385n" path="res://Scripts/time.gd" id="6_3cenx"]
 
 [node name="Main" type="Control" unique_id=1371591673]
 process_mode = 3
@@ -66,3 +67,12 @@ text = "Victoire !
 Vous avez trouvé la sortie."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Timer" type="CanvasLayer" parent="." unique_id=37302143]
+
+[node name="TIME" type="Label" parent="Timer" unique_id=279022256]
+offset_left = 1077.0
+offset_top = 602.0
+offset_right = 1117.0
+offset_bottom = 625.0
+script = ExtResource("6_3cenx")

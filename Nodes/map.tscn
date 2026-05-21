@@ -295,10 +295,10 @@ map = NodePath("../../..")
 visible = false
 
 [node name="Label" type="Label" parent="Commandes" unique_id=1249009155]
-offset_left = 33.0
-offset_top = 535.0
-offset_right = 408.0
-offset_bottom = 610.0
+offset_left = 21.0
+offset_top = 482.0
+offset_right = 396.0
+offset_bottom = 609.0
 text = "Déplacement : 'Q' et 'D' / Flèches directionnelles 
 
 Rotation du labyrinthe : 'A' et 'E'"
