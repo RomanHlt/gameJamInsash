@@ -9,6 +9,7 @@ func _ready() -> void:
 func play():
 	$Map.generate()
 	$Map.show()
+	$Map.commandes.show()
 	$Accueil.hide()
 
 func credits():
@@ -32,6 +33,7 @@ func plus():
 		
 func win():
 	$Map.hide()
+	$Map.commandes.hide()
 	$Victoire.show()
 	await get_tree().create_timer(5).timeout
 	$Victoire.hide()

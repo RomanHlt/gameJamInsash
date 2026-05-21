@@ -2,6 +2,7 @@ extends Node2D
 
 @export var generateur : Control
 @export var n : int = 5
+@export var commandes : CanvasLayer
 
 var seed :int =0;
 var plan = []
