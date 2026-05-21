@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bmkclo5tiu7ys" path="res://TexturePack/DungeonAssets/table consultation map2.png" id="3_1rpyo"]
 [ext_resource type="Texture2D" uid="uid://dhu2xarw7v4jp" path="res://TexturePack/DungeonAssets/table consultation map3.png" id="4_kbgo4"]
 [ext_resource type="Texture2D" uid="uid://b2xlyabgaltjq" path="res://TexturePack/DungeonAssets/table consultation map4.png" id="5_5lyui"]
+[ext_resource type="LabelSettings" uid="uid://2hknt0r0wsdj" path="res://TexturePack/new_label_settings.tres" id="6_1rpyo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uyaq3"]
 animations = [{
@@ -51,12 +52,14 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "SPACE pour utiliser."
+label_settings = ExtResource("6_1rpyo")
 
 [node name="Stop" type="Label" parent="." unique_id=826363585]
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Vous avez déjà utilisé cette table de cartographie, sa magie est épuisée."
+label_settings = ExtResource("6_1rpyo")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
