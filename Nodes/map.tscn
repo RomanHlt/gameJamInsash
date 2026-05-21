@@ -2,124 +2,34 @@
 
 [ext_resource type="Script" uid="uid://bkbprkkxp3nd4" path="res://Nodes/map.gd" id="1_04a3l"]
 [ext_resource type="PackedScene" uid="uid://qvnpoeahj1kn" path="res://Nodes/player.tscn" id="2_87ea5"]
-[ext_resource type="Texture2D" uid="uid://b8mux0pkvkhw1" path="res://TexturePack/DungeonAssets/dungeonSpritePack_Divided/walls1.png" id="2_w0csw"]
+[ext_resource type="Script" uid="uid://ckyqt4srdq2t8" path="res://Scripts/affichage.gd" id="2_bsr2u"]
+[ext_resource type="Texture2D" uid="uid://c2ftj0mxns76m" path="res://TexturePack/DungeonAssets/Walls_modified.png" id="3_bchwl"]
 [ext_resource type="Script" uid="uid://dttj2mme7lrd7" path="res://Nodes/minimap.gd" id="3_mb55k"]
-[ext_resource type="Texture2D" uid="uid://bsrqosgp7yuec" path="res://TexturePack/DungeonAssets/dungeonSpritePack_Divided/walls2.png" id="3_u6qu4"]
 [ext_resource type="Texture2D" uid="uid://1k5dfik28vey" path="res://TexturePack/DungeonAssets/dungeonSpritePack.png" id="3_w0csw"]
 [ext_resource type="PackedScene" uid="uid://2xsy723m5x07" path="res://Nodes/tablecartographie.tscn" id="5_cc1n3"]
 [ext_resource type="LabelSettings" uid="uid://2hknt0r0wsdj" path="res://TexturePack/new_label_settings.tres" id="8_5vequ"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rb5ux"]
-texture = ExtResource("2_w0csw")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tn31i"]
+texture = ExtResource("3_bchwl")
+0:0/size_in_atlas = Vector2i(3, 3)
 0:0/0 = 0
-4:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cc1n3"]
-texture = ExtResource("3_u6qu4")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
+3:0/size_in_atlas = Vector2i(3, 3)
 3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
+0:3/size_in_atlas = Vector2i(3, 3)
+0:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_whqwa"]
-sources/0 = SubResource("TileSetAtlasSource_rb5ux")
-sources/1 = SubResource("TileSetAtlasSource_cc1n3")
+sources/2 = SubResource("TileSetAtlasSource_tn31i")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vequ"]
-texture = ExtResource("2_w0csw")
+texture = ExtResource("3_bchwl")
+0:0/size_in_atlas = Vector2i(3, 3)
 0:0/0 = 0
-4:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bsr2u"]
-texture = ExtResource("3_u6qu4")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
+3:0/size_in_atlas = Vector2i(3, 3)
 3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_bchwl"]
-sources/0 = SubResource("TileSetAtlasSource_5vequ")
-sources/1 = SubResource("TileSetAtlasSource_bsr2u")
+sources/2 = SubResource("TileSetAtlasSource_5vequ")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u6qu4"]
 texture = ExtResource("3_w0csw")
@@ -238,24 +148,32 @@ sources/2 = SubResource("TileSetAtlasSource_u6qu4")
 script = ExtResource("1_04a3l")
 commandes = NodePath("Commandes")
 player = NodePath("Player")
-front = NodePath("View_front")
-back = NodePath("View_back")
+front = NodePath("Affichage/View_front")
+back = NodePath("Affichage/View_back")
 
-[node name="View_front" type="TileMapLayer" parent="." unique_id=2137947566]
+[node name="Affichage" type="Node2D" parent="." unique_id=271954967 node_paths=PackedStringArray("player", "carto")]
+position = Vector2(6, 11)
+script = ExtResource("2_bsr2u")
+player = NodePath("../Player")
+carto = NodePath("../Tablecartographie")
+
+[node name="View_front" type="TileMapLayer" parent="Affichage" unique_id=2137947566]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAABAAAAAAAAAAEAAAACAAAAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAJAAAAAAAAAAEAAAAKAAAAAAAAAAEAAAAMAAAAAAAAAAEAAAANAAAAAAAAAAEAAAAOAAAAAAAAAAEAAAAPAAAAAAAAAAEAAAAQAAAAAAAAAAEAAAARAAAAAAAAAAEAAAASAAAAAAAAAAEAAAATAAAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_whqwa")
 
-[node name="View_back" type="TileMapLayer" parent="." unique_id=1350996797]
-modulate = Color(1, 1, 1, 0.22352941)
+[node name="View_back" type="TileMapLayer" parent="Affichage" unique_id=1350996797]
+modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.37254903)
+self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.4392157)
 tile_map_data = PackedByteArray("AAALAAAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_bchwl")
 
 [node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]
-visible = false
+position = Vector2(64, 28)
 
 [node name="Tablecartographie" parent="." unique_id=2107118829 node_paths=PackedStringArray("canvas") instance=ExtResource("5_cc1n3")]
 visible = false
+scale = Vector2(0.15, 0.15)
 canvas = NodePath("../CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819207978]

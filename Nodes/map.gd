@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		player.view = (player.view + 1) % 4
 		if player.view < 0: player.view += 4;
 		print("view", player.view);
-		get_view()
+		get_view();
 	if player.posX == (len(plan) - 2) and player.posY == (len(plan) - 2):
 		print("Gagné")
 		get_parent().win()
@@ -46,15 +46,8 @@ func generate():
 			valide = true
 	$Tablecartographie.posX = x
 	$Tablecartographie.posY = y
-	
-	for ligne in plan:
-		print(ligne)
-	print($Tablecartographie.posX,$Tablecartographie.posY)
-	print(plan[$Tablecartographie.posY][$Tablecartographie.posX])
-	print("Haut gauche : ", plan[1][1])
-	print("Bas droite : ", plan[-2][-2])
 
-func get_view()->Array[Array]:
+func get_view()->void:
 	var front : Array[int] = []
 	var back : Array[int] = []
 	if player.view == 0:
@@ -112,7 +105,7 @@ func get_view()->Array[Array]:
 			back[i] = temp
 			
 	if player.view == 3:
-		# Ligne du joueur (Front)
+		# Ligne du joueur (Front)e
 		for ligne in plan:
 			front.append(ligne[player.posX])
 		# Ligne derrière (Back)
@@ -122,4 +115,6 @@ func get_view()->Array[Array]:
 		else:
 			for ligne in plan:
 				back.append(ligne[player.posX+1])
-	return [front, back]
+	$Affichage.update_view([front, back])
+	for ligne in plan:
+		print(ligne)

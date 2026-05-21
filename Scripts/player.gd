@@ -12,4 +12,37 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("left"):
+		if view == 0:
+			if get_parent().plan[posY][posX-1] == 1:
+				posX -= 1
+				position.x -= 16*3
+		elif view == 2:
+			if get_parent().plan[posY][posX+1] == 1:
+				posX += 1
+				position.x -= 16*3
+		elif view == 1:
+			if get_parent().plan[posY+1][posX] == 1:
+				posY += 1
+				position.x -= 16*3
+		elif view == 3:
+			if get_parent().plan[posY-1][posX] == 1:
+				posY -= 1
+				position.x -= 16*3
+	if Input.is_action_just_pressed("right"):
+		if view == 0:
+			if get_parent().plan[posY][posX+1] == 1:
+				posX += 1
+				position.x += 16*3
+		elif view == 2:
+			if get_parent().plan[posY][posX-1] == 1:
+				posX -= 1
+				position.x += 16*3
+		elif view == 1:
+			if get_parent().plan[posY-1][posX] == 1:
+				posY -= 1
+				position.x += 16*3
+		elif view == 3:
+			if get_parent().plan[posY+1][posX] == 1:
+				posY += 1
+				position.x += 16*3
