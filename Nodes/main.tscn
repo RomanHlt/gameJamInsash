@@ -31,3 +31,38 @@ generateur = NodePath("../Generateur")
 [node name="Generateur" parent="." unique_id=2051463712 instance=ExtResource("2_cfxlj")]
 visible = false
 layout_mode = 0
+
+[node name="Victoire" type="Control" parent="." unique_id=541035078]
+visible = false
+anchors_preset = 0
+offset_left = -306.0
+offset_top = -240.0
+offset_right = 1401.0
+offset_bottom = 903.0
+
+[node name="ColorRect" type="ColorRect" parent="Victoire" unique_id=813659147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Victoire" unique_id=571727606]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.5
+offset_top = -143.5
+offset_right = -50.5
+offset_bottom = -94.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Victoire !
+Vous avez trouvé la sortie."
+horizontal_alignment = 1
+vertical_alignment = 1

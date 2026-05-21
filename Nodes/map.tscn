@@ -233,8 +233,9 @@ texture = ExtResource("3_w0csw")
 [sub_resource type="TileSet" id="TileSet_u6qu4"]
 sources/2 = SubResource("TileSetAtlasSource_u6qu4")
 
-[node name="Map" type="Node2D" unique_id=351992275 node_paths=PackedStringArray("player", "front", "back")]
+[node name="Map" type="Node2D" unique_id=351992275 node_paths=PackedStringArray("commandes", "player", "front", "back")]
 script = ExtResource("1_04a3l")
+commandes = NodePath("Commandes")
 player = NodePath("Player")
 front = NodePath("View_front")
 back = NodePath("View_back")
@@ -251,8 +252,6 @@ tile_set = SubResource("TileSet_bchwl")
 
 [node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]
 visible = false
-posX = 1
-posY = 1
 
 [node name="Tablecartographie" parent="." unique_id=2107118829 node_paths=PackedStringArray("canvas") instance=ExtResource("5_cc1n3")]
 visible = false
@@ -291,3 +290,15 @@ grow_vertical = 2
 tile_set = SubResource("TileSet_u6qu4")
 script = ExtResource("3_mb55k")
 map = NodePath("../../..")
+
+[node name="Commandes" type="CanvasLayer" parent="." unique_id=686831808]
+visible = false
+
+[node name="Label" type="Label" parent="Commandes" unique_id=1249009155]
+offset_left = 33.0
+offset_top = 535.0
+offset_right = 408.0
+offset_bottom = 610.0
+text = "Déplacement : 'Q' et 'D' / Flèches directionnelles 
+
+Rotation du labyrinthe : 'A' et 'E'"
