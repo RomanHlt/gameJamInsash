@@ -251,8 +251,6 @@ tile_set = SubResource("TileSet_bchwl")
 
 [node name="Player" parent="." unique_id=1444893851 instance=ExtResource("2_87ea5")]
 visible = false
-posX = 1
-posY = 1
 
 [node name="Tablecartographie" parent="." unique_id=2107118829 node_paths=PackedStringArray("canvas") instance=ExtResource("5_cc1n3")]
 visible = false

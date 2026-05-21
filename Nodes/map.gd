@@ -26,6 +26,11 @@ func _process(delta: float) -> void:
 		if player.view < 0: player.view += 4;
 		print("view", player.view);
 		get_view()
+	if player.posX == (len(plan) - 2) and player.posY == (len(plan) - 2):
+		print("Gagné")
+		get_parent().win()
+		player.posX = 1
+		player.posY= 1
 
 func generate():
 	plan = generateur.generate_labyrinth(n, n)
@@ -44,7 +49,9 @@ func generate():
 	for ligne in plan:
 		print(ligne)
 	print($Tablecartographie.posX,$Tablecartographie.posY)
-	print(plan[$Tablecartographie.posX][$Tablecartographie.posY])
+	print(plan[$Tablecartographie.posY][$Tablecartographie.posX])
+	print("Haut gauche : ", plan[1][1])
+	print("Bas droite : ", plan[-2][-2])
 
 func get_view()->Array[Array]:
 	var front : Array[int] = []

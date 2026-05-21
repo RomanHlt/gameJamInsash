@@ -29,3 +29,10 @@ func plus():
 		taille += 1
 		$Map.n = taille
 		$Accueil.nombre.text = str(taille)
+		
+func win():
+	$Map.hide()
+	$Victoire.show()
+	await get_tree().create_timer(5).timeout
+	$Victoire.hide()
+	$Accueil.show()
